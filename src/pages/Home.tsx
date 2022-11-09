@@ -13,6 +13,7 @@ export function HomePage() {
                     <BreadcrumbBar />
                 </div>
                 <FileTable />
+
             </div>
 
         </div>
