@@ -7,6 +7,7 @@ import { Header } from "../components/Header";
 import { FileManagerContext } from "../contexts/file-manager-context";
 import { FileInfo } from "../model/file-info";
 import { useLocation } from "react-router-dom"
+import { FileUploadDialog } from "../dialog/FileUploadDialog";
 
 export function HomePage() {
     const [files, setFiles] = useState<FileInfo[]>([]);
@@ -29,7 +30,7 @@ export function HomePage() {
         loadData();
     }, [location.pathname]);
     return (
-        <FileManagerContext.Provider value={{ files, setFiles, openInNewTab, nestedPaths }}>
+        <FileManagerContext.Provider value={{ files, setFiles, openInNewTab, nestedPaths, loadData }}>
             <Header />
             <div className="container flex-col flex-wrap justify-between items-center mx-auto space-y-10">
                 <div className="flex flex-col bg-white rounded-lg border border-gray-200 shadow-sm dark:bg-gray-800 dark:border-gray-700 p-4 space-y-3">
@@ -39,6 +40,7 @@ export function HomePage() {
                 <FileTable />
 
             </div>
+            <FileUploadDialog/>
 
         </FileManagerContext.Provider>
     )
