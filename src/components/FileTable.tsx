@@ -7,12 +7,8 @@ import { FileInfo } from "../model/file-info";
 export function FileTable() {
     const { setFiles, files, openInNewTab }: { files: FileInfo[], setFiles: any, openInNewTab: any } = useContext(FileManagerContext);
     const navigate = useNavigate();
-    const location = useLocation();
     function loadNextFiles(path: string) {
         navigate("/" + path)
-        getFiles(decodeURI(path)).then(res => {
-            setFiles(res.data);
-        })
     }
     return (
         <div className="overflow-x-auto relative">
