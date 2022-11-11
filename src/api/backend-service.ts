@@ -12,6 +12,14 @@ export function getFiles(path: string): Promise<{
 }
 
 
+export function mkDir(currentDir: string, name: string): Promise<{
+    data: FileInfo[]
+}> {
+    return axios.post(base + "/file/create-dir", {
+        "currentDir": currentDir,
+        "name": name
+    });
+}
 export function renameFiles(paths: string[], name: string): Promise<{ data: StatusInfo<FileInfo>[] }> {
     return axios.post(base + "/file/rename-files", {
         "paths": paths,

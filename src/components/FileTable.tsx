@@ -1,7 +1,6 @@
 import { Checkbox } from "flowbite-react";
 import { useContext, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import { getFiles } from "../api/backend-service";
+import { useNavigate } from "react-router-dom";
 import { FileManagerContext } from "../contexts/file-manager-context";
 import { FileInfo } from "../model/file-info";
 
