@@ -1,11 +1,14 @@
-import { Button, Modal } from "flowbite-react";
+import { Modal, Button } from "flowbite-react";
+import { useContext } from "react";
+import { FileManagerContext } from "../contexts/file-manager-context";
 
 export function FolderCreateDialog() {
+    const { isOpenNewFolderDialog, setNewFolderDialogOpen } = useContext<{ isOpenNewFolderDialog: boolean, setNewFolderDialogOpen: any }>(FileManagerContext);
     return (
         <Modal
-            show={false}
+            show={isOpenNewFolderDialog}
             onClose={() => {
-
+                setNewFolderDialogOpen(false)
             }}
         >
             <Modal.Header>
@@ -32,7 +35,7 @@ export function FolderCreateDialog() {
                 <Button
                     color="gray"
                     onClick={() => {
-
+                        setNewFolderDialogOpen(false)
                     }}
                 >
                     Cancel

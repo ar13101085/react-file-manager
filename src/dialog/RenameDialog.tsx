@@ -1,22 +1,25 @@
-import { Button, Modal } from "flowbite-react";
+import { Modal, Button } from "flowbite-react";
+import { useContext } from "react";
+import { FileManagerContext } from "../contexts/file-manager-context";
 
 export function RenameDialog() {
+    const { isOpenRenameDialog, setRenameDialogOpen } = useContext<{ isOpenRenameDialog: boolean, setRenameDialogOpen: any }>(FileManagerContext);
     return (
         <Modal
-            show={false}
+            show={isOpenRenameDialog}
             onClose={() => {
-
+                setRenameDialogOpen(false)
             }}
         >
             <Modal.Header>
-                Create New Folder
+                Rename File/Folder
             </Modal.Header>
             <Modal.Body>
 
                 <div className="space-y-6">
-                    <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Folder name</label>
-                    <input type="email" id="email" aria-describedby="helper-text-explanation" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="New Folder" />
-                    <p id="helper-text-explanation" className="mt-2 text-sm text-gray-500 dark:text-gray-400">Folder will not create if folder is exist</p>
+                    <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Rename file/folder</label>
+                    <input type="email" id="email" aria-describedby="helper-text-explanation" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Rename Your Files" />
+                    <p id="helper-text-explanation" className="mt-2 text-sm text-gray-500 dark:text-gray-400">Existing same file name can be change.</p>
                 </div>
 
             </Modal.Body>
@@ -32,7 +35,7 @@ export function RenameDialog() {
                 <Button
                     color="gray"
                     onClick={() => {
-
+                        setRenameDialogOpen(false)
                     }}
                 >
                     Cancel

@@ -3,5 +3,6 @@ export interface FileInfo {
     name: string,
     relativePath: string,
     size: string,
-    creatingTime: string
+    creatingTime: string,
+    isSelected:boolean
 }

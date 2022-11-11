@@ -40,13 +40,28 @@ export function deleteFiles(paths: string[]): Promise<{ data: StatusInfo<FileInf
     });
 }
 
-export function uploadFiles(uploadDir: string, files: any): Promise<{ data: StatusInfo<FileInfo>[] }> {
+export function uploadFiles(uploadDir: string, files: any, progressCb: any): Promise<{
+    data: FileInfo[]
+}> {
     var formData = new FormData();
-    formData.append("file", files);
+    for (let i = 0; i < files.length; i++) {
+        formData.append("file", files[i]);
+    }
+
+
+
     formData.append("dir", uploadDir);
     return axios.post(base + "/file/upload-files", formData, {
         headers: {
             'Content-Type': 'multipart/form-data'
+        },
+        onUploadProgress: ({ loaded, total }) => {
+            if (total) {
+                let percent = Math.floor((loaded * 100) / total);
+                if (percent < 100) {
+                    progressCb(percent);
+                }
+            }
         }
     });
 }

@@ -1,13 +1,16 @@
 import { Modal, Button } from "flowbite-react";
+import { useContext } from "react";
+import { FileManagerContext } from "../contexts/file-manager-context";
 
 export function DeleteConfirmationDialog() {
+    const { isOpenDeleteDialog, setDeleteDialogOpen } = useContext<{ isOpenDeleteDialog: boolean, setDeleteDialogOpen: any }>(FileManagerContext);
     return (
         <Modal
-            show={true}
+            show={isOpenDeleteDialog}
             size="md"
             popup={true}
             onClose={() => {
-
+                setDeleteDialogOpen(false)
             }}
         >
             <Modal.Header />
@@ -31,7 +34,7 @@ export function DeleteConfirmationDialog() {
                         <Button
                             color="gray"
                             onClick={() => {
-
+                                setDeleteDialogOpen(false)
                             }}
                         >
                             No, cancel
