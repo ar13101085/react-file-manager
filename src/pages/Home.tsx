@@ -8,6 +8,8 @@ import { FileManagerContext } from "../contexts/file-manager-context";
 import { FileInfo } from "../model/file-info";
 import { useLocation } from "react-router-dom"
 import { FileUploadDialog } from "../dialog/FileUploadDialog";
+import { FolderCreateDialog } from "../dialog/FolderCreateDialog";
+import { DeleteConfirmationDialog } from "../dialog/DeleteConfirmationDialog";
 
 export function HomePage() {
     const [files, setFiles] = useState<FileInfo[]>([]);
@@ -41,6 +43,8 @@ export function HomePage() {
 
             </div>
             <FileUploadDialog/>
+            <FolderCreateDialog/>
+            <DeleteConfirmationDialog/>
 
         </FileManagerContext.Provider>
     )
