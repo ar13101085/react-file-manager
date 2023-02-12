@@ -1,1 +1,1 @@
-React File Manager, soon documentation will coming..
+React with Tailwind CSS File Manager, soon documentation will coming..
